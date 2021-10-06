@@ -184,10 +184,10 @@ library(&quot;dplyr&quot;)</code></pre>
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>link &lt;- &quot;https://en.wikipedia.org/wiki/Comma-separated_values&quot;
-#page &lt;- read_html(link)
+page &lt;- read_html(link)
 #class(page)
-page &lt;-link %&gt;% read_html() %&gt;% html_nodes(xpath = &#39;//*[@id=&quot;mw-content-text&quot;]/div[1]/table[2]/tbody&#39;) %&gt;% html_table()
-page</code></pre>
+name &lt;- page %&gt;% html_nodes(xpath = &#39;//*[@id=&quot;mw-content-text&quot;]/div[1]/table[2]/tbody&#39;) %&gt;% html_table()
+print(name)</code></pre>
 <pre><code>## [[1]]
 ## # A tibble: 4 x 5
 ##    Year Make  Model                                      Description       Price
@@ -196,6 +196,9 @@ page</code></pre>
 ## 2  1999 Chevy &quot;Venture \&quot;Extended Edition\&quot;&quot;             &quot;&quot;                 4900
 ## 3  1999 Chevy &quot;Venture \&quot;Extended Edition, Very Large\&quot;&quot; &quot;&quot;                 5000
 ## 4  1996 Jeep  &quot;Grand Cherokee&quot;                           &quot;MUST SELL!air, ~  4799</code></pre>
+<pre class="r"><code>write.csv(name, file=&quot;table.csv&quot;)
+#d&lt;-read.csv(&quot;table.csv&quot;)
+#d</code></pre>
 
 
 
